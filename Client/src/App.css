@@ -1,0 +1,25 @@
+.navbar{
+    background-color: black;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+}
+.page{
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+}
+.page:hover{
+    color: #DB4444;
+}
+.nav-pages{
+    display: flex;
+    gap: 2vw;
+}
+.logocontainer{
+    background-color: white;
+}
