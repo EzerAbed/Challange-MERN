@@ -1,5 +1,6 @@
 import Navbar from "./Navbar"
 import React, { useState } from 'react';
+import { toast } from "react-toastify"
 import './Contactus.css'
 
 export default function Contactus(){
@@ -7,10 +8,35 @@ export default function Contactus(){
     const [phone , setPhone]=useState('');
     const [mail , setMail]=useState('');
     const [message , setMessage]=useState('');
-    const handlesend = (e) => {
-        e.preventDefault();
-        console.log(`${name} , ${phone} , ${mail} , ${message}`);
-      };
+    // const handlesend = (e) => {
+    //     e.preventDefault();
+    //     console.log(`${name} , ${phone} , ${mail} , ${message}`);
+    //   };
+    function createMessage(e){
+        e.preventDefault()
+        let newMessage = {name,phone,mail,message}
+        fetch("http://localhost:8000/messages",{
+            method:"POST",
+            headers: {
+                "content-type":"application/json",
+            },
+            body : JSON.stringify(newMessage)
+            
+        })
+        .then(res=>res.json())
+            .then(data=>{
+                if(data.message){
+                    toast.error(data.message)
+                }else{
+                    toast.success("Message sent")
+                    setName("")
+                    setMail("")
+                    setPhone("")
+                    setMessage("")
+                }
+            })
+        
+    }
 
     return(
         <div className="contactus-page">
@@ -68,7 +94,7 @@ export default function Contactus(){
                         
                         <br />
                         <div className="constat-btn-container">
-                            <button type="submit" onClick={handlesend} className="contact-send-btn">Send Massage</button>
+                            <button type="submit" onClick={createMessage} className="contact-send-btn">Send Massage</button>
 
                         </div>
                     </form>

@@ -1,10 +1,10 @@
 .contact-container{
     display: flex;
     margin: 0 12vw;
-    height: 60vh;
+    height: 65vh;
     align-items: center;
     justify-content: baseline;
-    background-color: #f9eded;
+    background-color: white;
     border-radius: 30px;
     box-shadow: 10px 14px 26px #db444469;
 }
@@ -33,6 +33,7 @@
     padding: 10px;
     border-radius: 5px;
     border: 0;
+    background-color: #F5F5F5;
     border: 1px solid #DB4444;
     margin: 10px 0.5vw;
     overflow: hidden;
