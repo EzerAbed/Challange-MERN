@@ -5,29 +5,20 @@ const { text } = require("express");
 const messageSchema = mongoose.Schema({
     name : {
         type : String,
-        required:true,
-        trim:true
+        required:true
     },
     mail:{
         type: String,
-        required: true,
-        unique: true,
-        trim: true
+        required: true
     },
     phone: {
-        type: Number,
-        required: true,
-        unique: true,
-        trim: true
+        type: String,
+        required: true
     },
     message:{
-        type:text,
-        required: true,
-        unique: true,
-        trim: true
+        type:String,
+        required: true
     }
 })
 
-
-const Message = mongoose.model('Message',messageSchema)
-module.exports = Message;
+module.exports = mongoose.model('message',messageSchema);

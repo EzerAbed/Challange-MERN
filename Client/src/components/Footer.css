@@ -1,0 +1,55 @@
+.fouter{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    height: 35vh;
+    align-items: center;
+    margin-top: 5vh;
+    /* bottom: 0; */
+
+}
+.footer-icon{
+    color: #DB4444;
+    margin: 10px;
+}
+.footer-icon:hover{
+    color: white;
+}
+.footer-input{
+    margin: 15px 0 ;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    border: 0;
+}
+.footer-button{
+    padding: 5px;
+    border: 0;
+    color: white;
+    background-color: #DB4444;
+    font-weight: 600;
+    border-radius: 0 5px 5px 0;
+}
+.subsciption-p{
+    font-weight: bold;
+}
+.fouter-media{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+.fouter-account{
+    line-height: 40px;
+
+}
+.fouter-account a{
+    color: white;
+    text-decoration: none;
+
+}
+.fouter-account a:hover{
+    color: #DB4444;
+}
+.support{
+    line-height: 30px;
+}

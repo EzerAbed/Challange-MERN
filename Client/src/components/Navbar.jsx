@@ -10,9 +10,10 @@ export default function Navbar(){
     return (
         <div className="navbar">
             <div className="logocontainer">
-                <span className="logo">
-                    <FaFileImage></FaFileImage>
-                </span>
+                <h1 className="logo">
+                    {/* <FaFileImage></FaFileImage> */}
+                    Aladdin
+                </h1>
             </div>
             <div className="search-bar">
                 <SearchBar></SearchBar>

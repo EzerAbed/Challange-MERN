@@ -3,14 +3,16 @@
     align-items: center;
     border: 1px solid white;
     border-radius: 6px;
+    margin-right: 10px;
 }
 .search-input{
-    width: 40vw;
+    width: 35vw;
     height: 35px;
     border-radius: 5px 0 0 5px;
     padding:0 5px;
     border: 0;
     cursor: pointer;
+    
 
 }
 .search-button{
@@ -20,6 +22,7 @@
     border-radius: 0 5px 5px 0;
     border: 0;
     cursor: pointer;
+    
 }
 .search-icon{
     height: 25px;

@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-// const blogsRouter = require("./routes/blogs")
+const ContactRouter = require("./routes/contact")
 const cors = require("cors");
 const mongoose = require("mongoose")
 const app = express();
@@ -10,6 +10,7 @@ const app = express();
 app.use(express.json())
 app.use(morgan("dev"));
 app.use(cors("*"))
+app.use("/contact",ContactRouter)
 
 connectDb = async () => {
     try {

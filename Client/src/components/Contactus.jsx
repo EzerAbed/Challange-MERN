@@ -1,6 +1,7 @@
 import Navbar from "./Navbar"
+import Footer from "./Footer"
 import React, { useState } from 'react';
-import { toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import './Contactus.css'
 
 export default function Contactus(){
@@ -8,14 +9,12 @@ export default function Contactus(){
     const [phone , setPhone]=useState('');
     const [mail , setMail]=useState('');
     const [message , setMessage]=useState('');
-    // const handlesend = (e) => {
-    //     e.preventDefault();
-    //     console.log(`${name} , ${phone} , ${mail} , ${message}`);
-    //   };
+
     function createMessage(e){
         e.preventDefault()
+        
         let newMessage = {name,phone,mail,message}
-        fetch("http://localhost:8000/messages",{
+        fetch("http://localhost:8000/contact/message",{
             method:"POST",
             headers: {
                 "content-type":"application/json",
@@ -40,6 +39,7 @@ export default function Contactus(){
 
     return(
         <div className="contactus-page">
+            {/* <ToastContainer /> */}
             <Navbar></Navbar>
             <h1 className="contact-title">Contact us</h1>
             <div className="contact-container">
@@ -94,12 +94,14 @@ export default function Contactus(){
                         
                         <br />
                         <div className="constat-btn-container">
-                            <button type="submit" onClick={createMessage} className="contact-send-btn">Send Massage</button>
+                            <button type="submit" onClick={createMessage()} className="contact-send-btn">Send Massage</button>
 
                         </div>
                     </form>
                 </div>
             </div>
+
+            <Footer></Footer>
            
         </div>
     )
