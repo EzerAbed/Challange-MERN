@@ -20,10 +20,11 @@ export default function App(){
     return (
         <div>
             {/* <Cart></Cart> */}
+            <Navbar></Navbar>
             {/* <Contactus></Contactus> */}
             {/* <Paiment></Paiment> */}
-            <ProductCart product={product1}></ProductCart>
-            <ProductList></ProductList>
+            {/* <ProductCart product={product1}></ProductCart> */}
+            {/* <ProductList></ProductList> */}
         </div>
         // <Routes>
         //     <Route path="/messages" element={<Contactus />}/>

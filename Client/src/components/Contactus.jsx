@@ -94,7 +94,7 @@ export default function Contactus(){
                         
                         <br />
                         <div className="constat-btn-container">
-                            <button type="submit" onClick={createMessage()} className="contact-send-btn">Send Massage</button>
+                            <button type="submit" onClick={createMessage} className="contact-send-btn">Send Massage</button>
 
                         </div>
                     </form>
