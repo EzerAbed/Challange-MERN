@@ -8,13 +8,20 @@ import Paiment from "./components/Paiment";
 import ProductCart from "./components/ProductCart";
 
 export default function App(){
+    let product1= {
+        productName:"Crème À Main DORIS Gourmande Fruité - 100ml",
+        images:['https://mk-media.mytek.tn/media/catalog/product/cache/8be3f98b14227a82112b46963246dfe1/b/i/bison-x10-black1_30_1.jpg',],
+        price:"9000",
+        quantity:"2",
+        rating:"4.5"
+    }
    
     return (
         <div>
             {/* <Cart></Cart> */}
             {/* <Contactus></Contactus> */}
             {/* <Paiment></Paiment> */}
-            <ProductCart></ProductCart>
+            <ProductCart product={product1}></ProductCart>
         </div>
         // <Routes>
         //     <Route path="/messages" element={<Contactus />}/>
