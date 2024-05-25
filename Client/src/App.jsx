@@ -6,6 +6,7 @@ import Cart from "./components/Card";
 import { useEffect } from "react";
 import Paiment from "./components/Paiment";
 import ProductCart from "./components/ProductCart";
+import ProductList from "./components/ProductList";
 
 export default function App(){
     let product1= {
@@ -22,6 +23,7 @@ export default function App(){
             {/* <Contactus></Contactus> */}
             {/* <Paiment></Paiment> */}
             <ProductCart product={product1}></ProductCart>
+            <ProductList></ProductList>
         </div>
         // <Routes>
         //     <Route path="/messages" element={<Contactus />}/>
