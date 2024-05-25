@@ -1,0 +1,32 @@
+.productcart img{
+    width: 220px;
+    height: 220px;
+    
+}
+.productcart{
+    width: 230px;
+    padding: 20px 15px;
+    /* display: flex; */
+    /* justify-content: center; */
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.184);
+    border-radius: 15px;
+    margin: 1vh 1vw;
+    
+    
+}
+.description{
+    width: 220px;
+    text-align: center;
+}
+.title{
+    color:blue;
+    font-weight: bold;
+}
+.price{
+    color: #DB4444;
+    font-weight: 900;
+    font-size: 25px;
+}
+.staricon{
+    color: orange;
+}
