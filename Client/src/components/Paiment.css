@@ -1,0 +1,63 @@
+.paiment{
+    margin: 5vh 10vw;
+    padding: 5vh 5vw;
+    box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.162);
+}
+.paiment-title{
+    margin-bottom: 40px;
+    
+}
+.paiment-container{
+    display: flex;
+    padding: 5vh 5vw;
+    width: 60vw;
+    justify-content: space-around;
+}
+.personal-informations{
+    width: 30vw;
+    padding: 3vh 3vw;
+    line-height: 30px;
+}
+.personal-informations input{
+    width: 20vw;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.082);
+    padding: 5px;
+}
+.product-informations{
+    width: 30vw;
+    padding: 3vh 3vw;
+}
+.bank{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bank img{
+    width: 15vw;
+}
+.pp{
+    margin: 20px 0;
+}
+.payment-button{
+    color: white;
+    background-color: #DB4444;
+    border: 1px solid white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.payment-button:hover{
+    color: #DB4444;
+    background-color: white;
+    border: 1px solid #DB4444;
+}
+.payment-button-container{
+    display: flex;
+    justify-content: center;
+}
+.total-informations{
+    line-height: 30px;
+}

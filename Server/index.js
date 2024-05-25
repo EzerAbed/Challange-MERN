@@ -1,3 +1,4 @@
+
 const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
@@ -10,6 +11,8 @@ const logInRoute = require('./routes/logIn')
 const productsDetailsRoute = require('./routes/ProductsDetails') 
 const editRouter = require("./routes/editProfile")
 const productsRoute = require('./routes/Products')
+const ContactRouter = require("./routes/contact")
+
 
 //Middelware 
 app.use(express.json())
@@ -22,6 +25,7 @@ app.use("/logIn", logInRoute)
 app.use("/products", productsRoute)
 app.use("/products/detail", productsDetailsRoute)
 app.use("/edit", editRouter)
+app.use("/contact",ContactRouter)
 
 
 //Database connection
@@ -41,3 +45,4 @@ app.listen(8000, () => {
     connectDb()
     console.log("listening on port 8000 !");
 });
+
