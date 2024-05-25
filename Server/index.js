@@ -1,24 +1,39 @@
-const express = require("express");
-const morgan = require("morgan");
-const ContactRouter = require("./routes/contact")
-const productsRoute = require('./routes/Products')
-const cors = require("cors");
+
+const express = require("express")
+const morgan = require("morgan")
+const cors = require("cors")
 const mongoose = require("mongoose")
 const app = express();
 
+//Importing Routes
+const signUpRoute = require('./routes/SignUp')
+const logInRoute = require('./routes/logIn')
+const productsDetailsRoute = require('./routes/ProductsDetails') 
+const editRouter = require("./routes/editProfile")
+const productsRoute = require('./routes/Products')
+const ContactRouter = require("./routes/contact")
 
-//definition des middlewares
+
+//Middelware 
 app.use(express.json())
-app.use(morgan("dev"));
+app.use(morgan("dev"))
 app.use(cors("*"))
-app.use("/contact",ContactRouter)
-app.use("/products", productsRoute)
 
+//Routes definition 
+app.use("/signUp", signUpRoute)
+app.use("/logIn", logInRoute)
+app.use("/products", productsRoute)
+app.use("/products/detail", productsDetailsRoute)
+app.use("/edit", editRouter)
+app.use("/contact",ContactRouter)
+
+
+//Database connection
 connectDb = async () => {
     try {
-      await mongoose.connect("mongodb+srv://mohamedelayech:mohamedd123@mohamed.dak6caa.mongodb.net/", { //change it
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true,
+      await mongoose.connect("mongodb+srv://test:test@cluster0.otjixia.mongodb.net/ChallangeMern", { //change it
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
       })
       console.log("db connected")
     } catch (error) {
@@ -26,21 +41,8 @@ connectDb = async () => {
     }
 }
 
-// const Product = mongoose.model('Product', {
-//   productName: String,
-//   images: [String],
-//   price: Number,
-//   quantity: String,
-//   rating : String
-// });
-
-// app.get('/api/products', async (req, res) => {
-//   const products = await Product.find().exec();
-//   res.json(products);
-// });
-
-
 app.listen(8000, () => {
     connectDb()
-    console.log("listening on port 8000 ! ");
-  });
+    console.log("listening on port 8000 !");
+});
+

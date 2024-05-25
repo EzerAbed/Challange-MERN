@@ -1,0 +1,72 @@
+.logInContainer {
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa; 
+    padding: 20px;
+}
+
+.logInImage {
+    flex: 1; 
+    height: auto; 
+    max-width: 50%;
+    margin-right: 20px;
+}
+
+.logInFormField {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+
+.logInFormField h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.logInFormField h4 {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #6c757d; 
+}
+
+.logInFormField input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #495057; 
+}
+
+.logInFormField input::placeholder {
+    color: #adb5bd; 
+}
+
+.logInFormField button {
+    width: 100%;
+    padding: 10px;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 4px;
+    color: #fff; 
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logInFormField button:hover {
+    background-color: #c82333; 
+}
