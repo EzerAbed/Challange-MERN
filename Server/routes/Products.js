@@ -18,7 +18,7 @@ router.put("/:id", upadatProduct)
 router.put("/rating/:id", upadatProductsRating)
 
 //DELETE requests
-router.delete("/", deleteProductById)
+router.delete("/:id", deleteProductById)
 
 
 module.exports = router
