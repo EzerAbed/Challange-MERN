@@ -9,6 +9,7 @@ import SignUp from './Pages/SignUp.jsx';
 import ProductsDetails from './Pages/ProductsDetails.jsx'
 import Editprofile from './Pages/Editprofile.jsx'
 import ProductList from './components/ProductList.jsx'
+import Contactus from './components/Contactus.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path : "/editAccount/:id",
     element : < Editprofile />
+  },
+  {
+    path : "/contact/message",
+    element : <Contactus/>
   }
 ]);
 
