@@ -22,7 +22,34 @@ const createNewUser = async (req, res) =>{
     }
 }
 
+//Get all user 
+const getAllUsers = async (req,res) => {
+    try{
+        let users = await userSchema.find()
+        res.status(200).json(users)
+    }catch(error){
+        res.status(500).json({ message : "Unexpected Server Error" })
+    }
+}
+
+//delete user by id 
+const deleteUserById = async (req, res) => {
+    const userId = req.params.id;
+    try {
+        const deletedUser = await userSchema.findByIdAndDelete(userId);
+        if (!deletedUser) {
+            return res.status(404).json({ message: `Item with id: ${userId} not found. Please verify your information and retry.` });
+        }
+        res.json(deletedUser);
+    } catch (error) {
+        res.status(500).json({ message: "Server Error!!" });
+    }
+};
+
+
 //exporting all controllers 
 module.exports = {
     createNewUser,
+    getAllUsers,
+    deleteUserById
 }
