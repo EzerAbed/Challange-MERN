@@ -39,7 +39,6 @@ export default function ProductCart(props){
                 </div>
                 <div className="rate">
                     <span>{renderStars(product.rating)}</span>
-                    <span>{product.rating}</span>
                 </div>
             </div>
         </div>
