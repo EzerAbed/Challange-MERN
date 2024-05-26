@@ -20,7 +20,7 @@ export default function App(){
     return (
         <div>
             {/* <Cart></Cart> */}
-            <Navbar></Navbar>
+            {/* <Navbar></Navbar> */}
             {/* <Contactus></Contactus> */}
             {/* <Paiment></Paiment> */}
             {/* <ProductCart product={product1}></ProductCart> */}
