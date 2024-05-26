@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import image from "../assets/SignImage.jpg"
 import '../CSS/ProductsDetails.css'
 import { useParams  } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 
 const ProductsDetails = () => {
@@ -42,7 +43,7 @@ const ProductsDetails = () => {
             toast.error("No product ID provided in the URL")
             return
         }
-        fetch(`http://localhost:8000/products/${id}`)
+        fetch(`http://localhost:8000/products/detail/${id}`)
             .then(response => {
                 if (!response.ok) {
                     toast.error(`Error fetching product details: ${response.statusText}`)
@@ -63,8 +64,18 @@ const ProductsDetails = () => {
             });
     }, [id]);
 
+    //function to create as much starts as images
+    const renderStars = (rating) => {
+        const stars = [];
+        for (let i = 0; i < rating; i++) {
+            stars.push(<FontAwesomeIcon icon={faStar} className='staricon' key={i} />);
+        }
+        return stars;
+    };
+
     //getting the non primary images 
     const nonPrimaryImages = images.filter(image => !image.is_primary)
+    const primaryImages = images.filter(image => image.is_primary)
 
     return(
         <div className="productDetailsContainer">
@@ -76,12 +87,18 @@ const ProductsDetails = () => {
                             <img key={index} src={image.url} alt={`Image ${index}`} />
                         ))}
                     </div>
-                    <img src={image} alt="" className="mainImage"/>
+                    {primaryImages.map((image, index) =>(
+                        <img key={index} src={image.url} alt={`Image ${index}`} className="mainImage"/>
+                    ))}
                     <div className="details">
                         <h1>{productName}</h1>
-                        <p>{rating} <span>({reviewCount} person reviewed)</span> </p>
+                        <p>
+                            <span>{rating}</span>
+                            <span>{renderStars(rating)}</span>
+                            <span>({reviewCount} person reviewed)</span> 
+                        </p>
                         <h5>{price}DT</h5>
-                        <p>{description}</p>
+                        <p className="description">{description}</p>
                         <form action="">
                             <button 
                             onClick={handleMinusClick}
@@ -102,16 +119,6 @@ const ProductsDetails = () => {
                             <button type="submit"> buy now ! </button>
                         </form>
                     </div>
-                </div>
-                <div className="bottomPart">
-                    <h2>Related Items</h2>
-                    <ul>
-                        <li>
-                            <img src={image} alt="" />
-                            <h1>What is Lorem Ipsum?</h1>
-                            <p>123 DT</p>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
