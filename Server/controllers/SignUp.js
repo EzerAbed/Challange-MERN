@@ -4,7 +4,7 @@ const signUpvalidation = require('../validation/SignUp')
 //Creating a new user
 const createNewUser = async (req, res) =>{
     //verify that the req is as wanted
-    let { error, value } = signUpvalidation(req.body)
+    let { error, value } = signUpvalidation.validate(req.body)
     if (error){
         return res.status(400).json({ message : error.details[0].message })
     }
