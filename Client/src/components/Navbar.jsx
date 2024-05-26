@@ -17,14 +17,14 @@ export default function Navbar(){
                 <h1 className="logo">
                     {/* <FaFileImage></FaFileImage> */}
                     Aladdin
-                </h1>
+                </h1> 
             </div>
             <div className="search-bar">
                 <SearchBar></SearchBar>
             </div>
             <div className="nav-pages">
                 <a href="" className="page">Contact us</a>
-                {user? <div> <a href="" className="page"><FaUser></FaUser></a> <a href="" className="page"><FaShoppingCart></FaShoppingCart></a></div>:<Link to={"/signUp"}> <a href="" className="page">Get Started</a></Link>}
+                {user? <div> <Link to={"editAccount/:id"} href="" className="page"><FaUser></FaUser></Link> <a href="" className="page"><FaShoppingCart></FaShoppingCart></a></div>:<Link to={"/signUp"} > <a href="" className="page">Get Started</a></Link>}
                 
                 
                 

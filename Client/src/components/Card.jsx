@@ -6,7 +6,6 @@ import './Cart.css'
 export default function Cart(){
     return (
         <div className="cart">
-            <Navbar></Navbar>
             <div className="cart-content">
                 <h2>Cart</h2>
                 <div className="cart-container">
@@ -26,16 +25,7 @@ export default function Cart(){
                 <div className="undercart">
                     <div className="undercart-content">
                         <h3>Cart Total</h3>
-                        <div className="under-cart-element">
-                            <span>Subtotal:</span>
-                            <span></span>
-                        </div>
-                        <hr />
-                        <div className="under-cart-element">
-                            <span>Shipping:</span>
-                            <span></span>
-                        </div>
-                        <hr />
+                        
                         <div className="under-cart-element">
                             <span>Total</span>
                             <span></span>
@@ -46,7 +36,6 @@ export default function Cart(){
                     </div>
                 </div>
             </div>
-            <Footer></Footer>
         </div>
     )
 }
