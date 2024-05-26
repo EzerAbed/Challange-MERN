@@ -7,8 +7,8 @@
 .productcart{
     width: 230px;
     padding: 20px 15px;
-    /* display: flex; */
-    /* justify-content: center; */
+    display: flex; 
+    justify-content: center;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.184);
     border-radius: 15px;
     margin: 1vh 1vw;
