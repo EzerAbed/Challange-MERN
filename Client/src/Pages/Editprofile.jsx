@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';  // Added useEffect import
+import { useState, useEffect, useContext } from 'react';  // Added useEffect import
 import signInImage from '../assets/SignImage.jpg';
 import '../CSS/SignUp.css';
 import { Link, useParams } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserContext from '../contexts/UserContext'
 
 export default function Editprofile() {
     const [username, setUsername] = useState('');
@@ -11,6 +12,8 @@ export default function Editprofile() {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
+    const { user, setUser } = useContext(UserContext)
+    
     const { id } = useParams();
 
     const handleSubmit = (event) => {
@@ -45,20 +48,9 @@ export default function Editprofile() {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:8000/signUp/${id}`)  
-        .then(res => res.json())
-        .then(data => {
-            if (data.message) {
-                toast.error(data.message);
-            } else {
-                setUsername(data.username);
-                setEmail(data.email);
-            }
-        })
-        .catch(error => {
-            toast.error('An error occurred');
-        });
-    }, [id]);
+        setUsername(user.username)
+        setEmail(user.email)
+    }, []);
 
     return (
         <>
