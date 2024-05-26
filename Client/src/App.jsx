@@ -5,29 +5,29 @@ import { Route, Routes, useParams } from 'react-router-dom';
 import Cart from "./components/Card";
 import { useEffect } from "react";
 import Paiment from "./components/Paiment";
-import ProductCart from "./components/ProductCart";
-import ProductList from "./components/ProductList";
+import ProductList from "./Pages/ProductList";
+import LogIn from "./Pages/LogIn";
+import SignUp from "./Pages/SignUp";
+import ProductsDetails from "./Pages/ProductsDetails";
+import Editprofile from "./Pages/Editprofile"
+import Layout from './Pages/Layout'
+import Home from "./Pages/Home";
+
+
 
 export default function App(){
-    let product1= {
-        productName:"Crème À Main DORIS Gourmande Fruité - 100ml",
-        images:['https://mk-media.mytek.tn/media/catalog/product/cache/8be3f98b14227a82112b46963246dfe1/b/i/bison-x10-black1_30_1.jpg',],
-        price:"9000",
-        quantity:"2",
-        rating:"4.5"
-    }
    
-    return (
-        <div>
-            {/* <Cart></Cart> */}
-            <Navbar></Navbar>
-            {/* <Contactus></Contactus> */}
-            {/* <Paiment></Paiment> */}
-            {/* <ProductCart product={product1}></ProductCart> */}
-            {/* <ProductList></ProductList> */}
-        </div>
-        // <Routes>
-        //     <Route path="/messages" element={<Contactus />}/>
-        // </Routes>
+    return (   
+        <Routes>
+            <Route path="/" element={<Layout />} > 
+                <Route index element={<Home />} />
+                <Route path="logIn" element={<LogIn />} />
+                <Route path="signUp" element={<SignUp />} />
+                <Route path="products" element={< ProductList />} />
+                <Route path="products/details/:id" element={< ProductsDetails />} />
+                <Route path="editAccount/:id" element={< Editprofile />} />
+                <Route path="messages" element={<Contactus />}/>
+            </Route >
+        </Routes>
     )
 }
