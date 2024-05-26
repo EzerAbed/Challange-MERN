@@ -8,9 +8,10 @@
     display: flex;
     gap: 70px;
     width: 970px;
-    height: 600px;
+    height: auto;
     margin-left: 134px;
-    margin-top: 178px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .sideImages{
@@ -109,3 +110,4 @@ background-color: #ddd;
     width: 160px;
     height: 44px;
 }
+
