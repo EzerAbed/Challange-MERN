@@ -5,6 +5,7 @@ import { FaFileImage } from 'react-icons/fa';
 import '../App.css'
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 
 
@@ -15,16 +16,16 @@ export default function Navbar(){
             <div className="logocontainer">
                 <h1 className="logo">
                     {/* <FaFileImage></FaFileImage> */}
-                    Aladdin
+                    <Link to="/" className="page">Aladdin</Link>
                 </h1>
             </div>
             <div className="search-bar">
                 <SearchBar></SearchBar>
             </div>
             <div className="nav-pages">
-                <a href="" className="page">Contact us</a>
-                {user? <div> <a href="" className="page"><FaUser></FaUser></a> <a href="" className="page"><FaShoppingCart></FaShoppingCart></a></div>: <a href="" className="page">Get Started</a>}
-                
+                <Link to="/messages" className="page">Contact us</Link>
+                {user? <div> <Link to="/profil" className="page"><FaUser></FaUser></Link> <Link to="/cart" className="page"><FaShoppingCart></FaShoppingCart></Link></div>: <Link to="/signUp" className="page">Get Started</Link>}
+                <Link to="/products"  className="page">Our Products</Link>
                 
                 
                 

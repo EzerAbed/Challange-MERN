@@ -46,9 +46,42 @@ const createNewProduct = async (req,res) => {
     }
 }
 
+//get products from a specific cathegory
+const getProductByCategory = async (req,res)=>{
+    let cat = req.params.category
+    try{
+        let products = await productSchema.find({category:cat})
+        res.status(200).json(products)
+    }catch(e){
+        return res.status(400).json({message:"no product with category " + cat+" or error finding products"} )
+    }
+}
+
+//get the searched products
+const getProductBySearch = async (req, res) => {
+    let searchQuery = req.params.searchQuery;
+    try {
+        let products = await productSchema.find({
+            $or: [
+                { name: { $regex: searchQuery, $options: 'i' } },
+                { category: { $regex: searchQuery, $options: 'i' } },
+                { description: { $regex: searchQuery, $options: 'i' } }
+            ]
+        }).exec();
+        if (products.length === 0) {
+            return res.status(400).json({ message: "no product found for the given search query" });
+        }
+        res.status(200).json(products);
+    } catch (e) {
+        return res.status(400).json({ message: "error finding products" });
+    }
+}
+
 module.exports = {
     getAll,
     createNewProduct,
     getBestProducts,
-    getNewestProudct
+    getNewestProudct,
+    getProductByCategory,
+    getProductBySearch
 }

@@ -1,44 +1,39 @@
-import { useState, useEffect } from 'react'
-import Banner from '../assets/Banner.png'
-import '../CSS/Home.css'
-import ProductCart from './ProductCart'
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { useState, useEffect } from 'react';
+import Banner from '../assets/Banner.png';
+import '../CSS/Home.css';
+import ProductCart from './ProductCart';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
-    //state definition 
-    const [bestSeller, setBestSeller] = useState([])
-    const [newestProducts, setNewestProducts] = useState([])
-    
-    //sending the necessary GET requests
-    useEffect(()=>{
-        //fetch the best selling products
+    const [bestSeller, setBestSeller] = useState([]);
+    const [newestProducts, setNewestProducts] = useState([]);
+
+    useEffect(() => {
         fetch("http://localhost:8000/products/bestProducts")
-        .then(response => response.json())
-        .then(data => {
-            if(data.message){
-                toast.error(data.message)
-            }else{
-                setBestSeller(data)
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    toast.error(data.message);
+                } else {
+                    setBestSeller(data);
+                }
+            });
 
-        //fetch the newest products
         fetch("http://localhost:8000/products/newestProducts")
-        .then(response => response.json())
-        .then(data => {
-            if(data.message){
-                toast.error(data.message)
-            }else{
-                setNewestProducts(data)
-            }
-        })
-    },[])
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    toast.error(data.message);
+                } else {
+                    setNewestProducts(data);
+                }
+            });
+    }, []);
 
-    // Slider settings
     const settings = {
         dots: true,
         infinite: true,
@@ -47,11 +42,11 @@ const Home = () => {
         slidesToScroll: 1,
     };
 
-    return(
+    return (
         <>
             <ToastContainer />
-            <div>
-                <img src={Banner} alt="Banner Image" className='bannerImage'/>
+            <div className="container home-page">
+                <img src={Banner} alt="Banner Image" className='bannerImage' />
                 <div className='bestSeller'>
                     <h2>Best Sellers</h2>
                     <Slider {...settings}>
@@ -70,7 +65,7 @@ const Home = () => {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default Home
+export default Home;
