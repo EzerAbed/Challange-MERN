@@ -2,9 +2,13 @@ import ReactDOM from 'react-dom';
 import './Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook ,  faInstagram , faTwitter} from '@fortawesome/free-brands-svg-icons';
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 
 export default function Footer(){
+    let {user, setUser}=useContext(UserContext)
     return (
         <div className="fouter">
             <div className="fouter-left">
@@ -30,17 +34,17 @@ export default function Footer(){
             <div className="fouter-account">
                 <h3>Account</h3>
                 <div className="fouter-account-details">
-                    <a href="">Account/Log in</a><br />
-                    <a href="">Cart</a><br />
-                    <a href="">Last </a><br />
+                    {user? <div> <Link to="/profil">Account</Link></div> : <Link to="/logIn">Log In</Link>} <br />
+                    <Link to="/cart">Cart</Link><br />
+                    <Link to="">Last </Link><br />
                 </div>
                 
             </div>
             <div className="support">
                 <ul>
                     <li>10 Rue Saint Augustin 1002 Tunis Tunisia</li>
-                    <li>+8801611112222</li>
-                    <li>contact@Aladdin.con</li>
+                    <li>+216 12 345 678</li>
+                    <li>contact@Aladdin.com</li>
                 </ul>
                 
             </div>
