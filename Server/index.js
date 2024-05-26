@@ -12,6 +12,7 @@ const productsDetailsRoute = require('./routes/ProductsDetails')
 const editRouter = require("./routes/editProfile")
 const productsRoute = require('./routes/Products')
 const ContactRouter = require("./routes/contact")
+const ordersRouter = require('./routes/orders')
 
 
 //Middelware 
@@ -26,6 +27,7 @@ app.use("/products", productsRoute)
 app.use("/products/detail", productsDetailsRoute)
 app.use("/edit", editRouter)
 app.use("/contact",ContactRouter)
+app.use("/orders", ordersRouter)
 
 
 //Database connection
