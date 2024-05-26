@@ -1,0 +1,67 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.bannerImage {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bestSeller, .newProducts {
+    margin-bottom: 40px;
+}
+
+.product-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.Toastify__toast-container {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .slick-slide {
+        padding: 5px;
+    }
+
+    .slick-list {
+        margin: 0 -10px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .slick-slide {
+        padding: 2px;
+    }
+
+    .slick-list {
+        margin: 0 -5px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+}
