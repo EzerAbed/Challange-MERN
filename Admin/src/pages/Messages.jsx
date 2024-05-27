@@ -6,7 +6,7 @@ const Messages = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/messages')
+    fetch('http://localhost:8000/contact/')
       .then(response => response.json())
       .then(data => {
         setMessages(data);
@@ -18,8 +18,11 @@ const Messages = () => {
   }, []);
 
   const handleDeleteMessage = (messageId) => {
-    fetch(`/api/messages/${messageId}`, {
+    fetch(`http://localhost:8000/contact/${messageId}`, {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+    },
     })
       .then(response => response.json())
       .then(() => {
@@ -36,7 +39,7 @@ const Messages = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <table>
+        <table style={{width:'100%',textAlign:'center'}}>
           <thead>
             <tr>
                 <th>ID</th>
