@@ -1,8 +1,7 @@
-
-
+// React Component
 import React, { useState, useEffect } from 'react';
 
-export default function Messages(){
+const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,8 +39,10 @@ export default function Messages(){
         <table>
           <thead>
             <tr>
-              <th>User Name</th>
-              <th>User Email</th>
+                <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
               <th>Message</th>
               <th>Actions</th>
             </tr>
@@ -49,8 +50,10 @@ export default function Messages(){
           <tbody>
             {messages.map((message) => (
               <tr key={message._id}>
-                <td>{message.user.name}</td>
-                <td>{message.user.email}</td>
+                <td>{message._id}</td>
+                <td>{message.name}</td>
+                <td>{message.mail}</td>
+                <td>{message.phone}</td>
                 <td>{message.message}</td>
                 <td>
                   <button onClick={() => handleDeleteMessage(message._id)}>Mark as read</button>
@@ -64,3 +67,4 @@ export default function Messages(){
   );
 };
 
+export default Messages;
