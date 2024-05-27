@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 import { HiOutlineSearch } from 'react-icons/hi';
 import './SearchBar.css';
 
-
-const SearchBar = () => {
+const SearchBar = ({setProducts}) => {
   const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(`Searching for: ${search}`);
+    fetch(`http://localhost:8000/products/search/${search}`)
+      .then(response => response.json())
+      .then(data => {
+        setSearchResults(data);
+        setProducts(data);
+        console.log('Search results:', searchResults); // Add this line
+      })
+      .catch(error => console.error('Error searching products:', error));
   };
 
   return (

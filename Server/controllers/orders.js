@@ -15,7 +15,9 @@ const getAllOrders = async (req, res) => {
 const getOrderByUserId = async (req, res) => {
     const userId = req.params.id;
     try {
+
         const userOrders = await ordersSchema.find({ idCustumer: userId, status : false }).populate('idProduct');
+
         if (!userOrders || userOrders.length === 0) {
             return res.status(404).json([]);
         }
@@ -24,6 +26,7 @@ const getOrderByUserId = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 //update status
 const updateStatue = async (req, res) => {
@@ -44,6 +47,7 @@ const updateStatue = async (req, res) => {
         res.status(500).json({ message: 'Failed to update order statuses', error });
     }
 }
+
 
 //create an order
 const createOrder = async (req, res) => {

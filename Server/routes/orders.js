@@ -3,6 +3,7 @@ const router = require("express").Router()
 //Importing controllers
 const { getAllOrders, createOrder, deleteOrderById, getOrderByUserId, updateStatue } = require("../controllers/orders")
 
+
 //GET requests
 router.get("/", getAllOrders)
 router.get("/:id", getOrderByUserId)

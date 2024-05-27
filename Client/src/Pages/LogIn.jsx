@@ -1,15 +1,23 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import signInImage from '../assets/SignImage.jpg'
 import '../CSS/LogIn.css'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import UserContext from '../contexts/UserContext'
+import { useNavigate, Link } from 'react-router-dom'
+
 
 //Page definition
 const LogIn = () => {
+    
+    const navigate = useNavigate()
     //State Creation
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    //using the userContext 
+    const { user, setUser } = useContext(UserContext)
+    
     //Creation of the handleSubmit function
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -26,15 +34,18 @@ const LogIn = () => {
         .then(response => response.json())
         .then(data => {
             if(data.message){
-                toast.error()
+                toast.error(data.message)
             }
             else{
                 toast.success("welcome back " + data.user.username )
+                setUser(prev => data.user)
                 setEmail('')
                 setPassword('')
+                navigate('/')
             }
         }) 
     }
+
     return(
         <>
             <ToastContainer />
@@ -61,7 +72,7 @@ const LogIn = () => {
                             required
                         />
                         <button type="submit">Log In</button>
-                        <p>Forgot Password?</p>
+                        <p>You don't have an Account ? <Link to="/signUp">Sign Up</Link> </p>
                     </form>
                 </div>
             </div>

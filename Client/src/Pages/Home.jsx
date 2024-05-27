@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Banner from '../assets/Banner.png';
 import '../CSS/Home.css';
 import ProductCart from './ProductCart';
@@ -7,10 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import UserContext from '../contexts/UserContext'
 
 const Home = () => {
     const [bestSeller, setBestSeller] = useState([]);
     const [newestProducts, setNewestProducts] = useState([]);
+
+    //import the user
+    const { user } = useContext(UserContext)
 
     useEffect(() => {
         fetch("http://localhost:8000/products/bestProducts")
@@ -41,6 +45,7 @@ const Home = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
     };
+
 
     return (
         <>
