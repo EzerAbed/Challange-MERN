@@ -77,11 +77,110 @@ const getProductBySearch = async (req, res) => {
     }
 }
 
+//delete a product
+const deleteProductById = async (req, res) => {
+    const productId = req.params.id;
+    try {
+        const deletedProduct = await productSchema.findByIdAndDelete(productId);
+        if (!deletedProduct) {
+            return res.status(404).json({ message: `Item with id: ${productId} not found. Please verify your information and retry.` });
+        }
+        res.json(deletedProduct);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+//update a product
+const upadatProduct = async (req, res) => {
+    const productId = req.params.id;
+
+    // Validate the request body
+    const { error, value } = productValidation.validate(req.body);
+    if (error) {
+        return res.status(400).json({ message: error.details[0].message });
+    }
+
+    // Destructure the validated values
+    const { name, category, description, price, images, stock_quantity, rating, reviews_count } = value;
+
+    try {
+        // Find the product by ID
+        const product = await productId.findById(productId);
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        // Update the product's informations
+        product.name = name
+        product.category = category
+        product.description = description
+        product.price = price
+        product.images = images
+        product.stock_quantity = stock_quantity
+        product.rating = rating
+        product.reviews_count = reviews_count
+        product.modifiedAt = Date.now
+
+        // Save the updated product
+        const updatedProduct = await product.save();
+
+        // Return the updated product information 
+        res.json({
+            id: updatedProduct._id,
+            name: updatedProduct.name,
+            category: updatedProduct.category,
+            price : updatedProduct.price,
+            images : updatedProduct.images,
+            rating : updatedProduct.rating,
+            reviews_count : updatedProduct.reviews_count
+        });
+    } catch (e) {
+        res.status(500).json({ message: e.message });
+    }
+};
+
+//update product's rating
+const upadatProductsRating = async (req, res) => {
+    const productId = req.params.id;
+    const newRating = parseFloat(req.body.rating);
+
+    try {
+        const product = await productSchema.findById(productId);
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        product.rating = ((product.rating * product.reviews_count) + newRating) / (product.reviews_count + 1);
+        product.reviews_count += 1;
+        product.modifiedAt = Date.now();
+
+        const updatedProduct = await product.save();
+
+        res.json({
+            id: updatedProduct._id,
+            name: updatedProduct.name,
+            category: updatedProduct.category,
+            price: updatedProduct.price,
+            images: updatedProduct.images,
+            rating: updatedProduct.rating,
+            reviews_count: updatedProduct.reviews_count
+        });
+    } catch (e) {
+        res.status(500).json({ message: e.message });
+    }
+};
+
+
+
 module.exports = {
     getAll,
     createNewProduct,
     getBestProducts,
     getNewestProudct,
     getProductByCategory,
-    getProductBySearch
+    getProductBySearch, 
+    deleteProductById, 
+    upadatProduct, 
+    upadatProductsRating
 }
