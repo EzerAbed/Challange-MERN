@@ -16,6 +16,8 @@ export default function ProductCart(props){
         return stars;
     };
 
+    const primaryImages = product.images.filter(image => image.is_primary);
+
     //creating a function that onclick take us to the corresponding detail page
     const handleClick = () => {
         navigate(`/products/details/${product._id}`);
@@ -24,7 +26,9 @@ export default function ProductCart(props){
     return(
         <div className='productcart' onClick={handleClick}>
             <div className="product-img">
-            {product.images && <img src={product.images[0].url} alt="product image" />}
+            {primaryImages.map((image, index) => (
+                        <img key={index} src={image.url} alt={`Image ${index}`} className="mainImage" />
+                    ))}
                 </div>
             <div className="description">
                 <div className="title">
