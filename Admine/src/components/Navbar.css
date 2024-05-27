@@ -1,0 +1,23 @@
+.navbar{
+    background-color: black;
+    /* margin: 0; */
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    height: 9vh;
+    align-items: center;
+
+}
+.pages{
+    display: flex;
+    list-style: none;
+    gap: 5vw;
+    align-items: center;
+}
+.pages li{
+    font-weight: bold;
+    cursor: pointer;
+}
+.pages li:hover{
+    color: #DB4444;
+}
