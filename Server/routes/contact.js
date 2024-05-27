@@ -6,7 +6,7 @@ router.get("/", getAllMessages)
 
 router.post("/message",createNewMessage)
 
-router.delete("/", deleteMessageById)
+router.delete("/:id", deleteMessageById)
 // router.get("/message/:name",createNewMessage)
 
 
