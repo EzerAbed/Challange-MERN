@@ -17,10 +17,6 @@ const Home = () => {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        if(user){
-            toast.success(`Welcome back ${user.username}`)
-        }
-
         fetch("http://localhost:8000/products/bestProducts")
             .then(response => response.json())
             .then(data => {
