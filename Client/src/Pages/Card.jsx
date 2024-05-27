@@ -4,13 +4,14 @@ import { useState, useEffect, useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { FaHandHoldingUsd } from 'react-icons/fa';
 
 export default function Cart() {
     const [orders, setOrders] = useState([]);
     const { user } = useContext(UserContext);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!user) {
@@ -37,9 +38,14 @@ export default function Cart() {
         return orders.reduce((acc, order) => acc + (order.price * order.quantity), 0);
     };
 
-    const handleShopClick = () =>{
-        navigate("/products")
-    }
+    const handleShopClick = () => {
+        navigate("/products");
+    };
+
+    const handleCheckOut = () => {
+        const total = calculateTotal();
+        navigate("/cart/payment", { state: { total } });
+    };
 
     return (
         <div className="cart">
@@ -79,7 +85,7 @@ export default function Cart() {
                             <span>{calculateTotal()}</span>
                         </div>
                         <div className="under-cart-button">
-                            <button className="cart-button">Process to Checkout</button>
+                            <button className="cart-button" onClick={handleCheckOut}>Process to Checkout</button>
                         </div>
                     </div>
                 </div>
