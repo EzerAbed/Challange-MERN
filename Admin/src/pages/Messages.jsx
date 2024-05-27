@@ -35,7 +35,7 @@ const Messages = () => {
 
   return (
     <div>
-      <h1>Messages</h1>
+      <h1 style={{margin:'5vh 10vw'}}>Messages</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
