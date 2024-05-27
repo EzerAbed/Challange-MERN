@@ -1,7 +1,7 @@
 const router = require("express").Router()
 
 //import the conrollers
-const { getAll, createNewProduct, getBestProducts, getNewestProudct, getProductByCategory, getProductBySearch } = require('../controllers/Products')
+const { getAll, createNewProduct, getBestProducts, getNewestProudct, getProductByCategory, getProductBySearch, upadatProduct, upadatProductsRating, deleteProductById } = require('../controllers/Products')
 
 //GET requests
 router.get("/", getAll)
@@ -14,7 +14,11 @@ router.get("/search/:searchQuery",getProductBySearch)
 router.post("/", createNewProduct)
 
 //PUT requests
+router.put("/:id", upadatProduct)
+router.put("/rating/:id", upadatProductsRating)
 
 //DELETE requests
+router.delete("/:id", deleteProductById)
+
 
 module.exports = router
