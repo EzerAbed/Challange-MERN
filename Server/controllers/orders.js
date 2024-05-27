@@ -15,7 +15,9 @@ const getAllOrders = async (req, res) => {
 const getOrderByUserId = async (req, res) => {
     const userId = req.params.id;
     try {
-        const userOrders = await ordersSchema.find({ idCustumer: userId }).populate('idProduct');
+
+        const userOrders = await ordersSchema.find({ idCustumer: userId, status : false }).populate('idProduct');
+
         if (!userOrders || userOrders.length === 0) {
             return res.status(404).json([]);
         }
@@ -24,6 +26,28 @@ const getOrderByUserId = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+
+//update status
+const updateStatue = async (req, res) => {
+    const orders = req.body;
+
+    try {
+        const bulkOps = orders.map(order => ({
+            updateOne: {
+                filter: { _id: order._id },
+                update: { status: order.status }
+            }
+        }));
+
+        await ordersSchema.bulkWrite(bulkOps);
+        res.status(200).json({ message: 'Order statuses updated successfully' });
+    } catch (error) {
+        console.error('Error updating order statuses:', error);
+        res.status(500).json({ message: 'Failed to update order statuses', error });
+    }
+}
+
 
 //create an order
 const createOrder = async (req, res) => {
@@ -37,7 +61,7 @@ const createOrder = async (req, res) => {
         const order = await ordersSchema.create(value);
         res.status(201).json(order);
     } catch (e) {
-        res.status(500).json({ message: "Server Error !!" });
+        res.status(500).json({ message: e.message });
     }
 };
 
@@ -59,5 +83,6 @@ module.exports = {
     getAllOrders,
     getOrderByUserId,
     createOrder,
-    deleteOrderById
+    deleteOrderById,
+    updateStatue
 }

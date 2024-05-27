@@ -2,6 +2,9 @@ const mongoose = require("mongoose")
 const userSchema = require("./SignUp.js")
 const productSchema = require("./Products.js")
 
+const { type } = require("../validation/contact.js")
+
+
 //definition of the orders database schema
 const ordersSchema = mongoose.Schema({
     idCustumer : {
@@ -24,6 +27,11 @@ const ordersSchema = mongoose.Schema({
     price : {
         type : Number,
         required : true
+    },
+
+    status : {
+        type : Boolean,
+        default : false
     },
 
     createdAt : {

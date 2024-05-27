@@ -1,8 +1,12 @@
 const router = require("express").Router()
 
-const{createNewMessage}=require('../controllers/contact')
+const{createNewMessage, getAllMessages, deleteMessageById}=require('../controllers/contact')
+
+router.get("/", getAllMessages)
 
 router.post("/message",createNewMessage)
+
+router.delete("/:id", deleteMessageById)
 // router.get("/message/:name",createNewMessage)
 
 

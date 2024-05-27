@@ -17,6 +17,8 @@ const orderValidation = Joi.object({
     .greater(0)
     .required(),
 
+    status : Joi.boolean(),
+
     createdAt: Joi.date()
 })
 

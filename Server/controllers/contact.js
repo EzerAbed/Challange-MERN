@@ -16,4 +16,31 @@ const createNewMessage = async (req, res) =>{
     }
 }
 
-module.exports = {createNewMessage,}
+//get all messages 
+const getAllMessages = async (req,res) => {
+    try{
+        let messages = await messageSchema.find()
+        res.status(200).json(messages)
+    }catch(error){
+        res.status(500).json({ message : "Unexpected Server Error" })
+    }
+}
+
+//delete message by id 
+const deleteMessageById = async (req, res) => {
+    const messageId = req.params.id;
+    try {
+        const deletedMessage = await messageSchema.findByIdAndDelete(messageId);
+        if (!deletedMessage) {
+            return res.status(404).json({ message: `Item with id: ${messageId} not found. Please verify your information and retry.` });
+        }
+        res.json(deletedMessage);
+    } catch (error) {
+        res.status(500).json({ message: "Server Error!!" });
+    }
+};
+
+module.exports = {createNewMessage,
+    getAllMessages,
+    deleteMessageById
+}
