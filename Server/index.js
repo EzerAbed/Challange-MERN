@@ -33,7 +33,7 @@ app.use("/orders", ordersRouter)
 //Database connection
 connectDb = async () => {
     try {
-      await mongoose.connect("mongodb+srv://test:test@cluster0.otjixia.mongodb.net/ChallangeMern", { //change it
+      await mongoose.connect("Add your Mongo DB Url", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
